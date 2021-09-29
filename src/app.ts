@@ -1,6 +1,8 @@
 import cors from "cors";
 import express from "express";
 
+const { PORT } = process.env;
+
 export const makeRouter = () => {
     const app = express();
     app.use(cors());
@@ -8,9 +10,9 @@ export const makeRouter = () => {
 
     app.get("/", (_, res) => res.status(200).send("ok"));
 
-    app.listen(8080, () => {
+    app.listen(PORT, () => {
         console.log("###############################");
-        console.log("  Listening on port : 8080");
+        console.log(`  Listening on port : ${PORT}`);
         console.log("###############################");
     });
 
