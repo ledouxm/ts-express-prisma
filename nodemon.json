@@ -2,5 +2,5 @@
     "watch": ["src", ".env"],
     "ext": "js,ts,json",
     "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"],
-    "exec": "ts-node ./src/server.ts"
+    "exec": "ts-node -r tsconfig-paths/register ./src/server.ts"
 }

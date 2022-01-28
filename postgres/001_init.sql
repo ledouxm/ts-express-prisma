@@ -1,1 +1,1 @@
-CREATE DATABASE myDb;
+CREATE DATABASE prismadb;

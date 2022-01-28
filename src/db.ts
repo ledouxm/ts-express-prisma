@@ -1,7 +1,3 @@
-import { MikroORM } from "@mikro-orm/core";
-import dbConfig from "../mikro-orm.config";
-export const makeDb = async () => {
-    const orm = await MikroORM.init(dbConfig);
+import { PrismaClient } from "@prisma/client";
 
-    return orm;
-};
+export const db = new PrismaClient();

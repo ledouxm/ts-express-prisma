@@ -1,17 +1,22 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { makeRouter } from "./app";
-import { makeDb } from "./db";
-import { Temperature } from "./entities/Temperature";
+import { makeRouter } from "@/app";
+import { db } from "@/db";
+import { makeDebug } from "@/utils";
+
+const debug = makeDebug("server.ts");
 
 const main = async () => {
-    const app = makeRouter();
-    const orm = await makeDb();
-
-    const result = await orm.em.find(Temperature, {});
-
-    console.log(result);
+    try {
+        const app = makeRouter();
+        const results = await db.script.findMany();
+        debug("results", results);
+    } catch (e) {
+        throw e;
+    } finally {
+        await db.$disconnect();
+    }
 };
 
 main();
